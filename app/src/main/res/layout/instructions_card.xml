@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
+    android:background="@color/off_white"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
@@ -10,18 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="10."
+        android:fontFamily="@font/montserrat"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/step"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Add the egg mixture to the dry mixture and gently mix to combine. Do not overmix."
-        android:textSize="15sp"
-        android:textColor="@color/black"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@id/no" />
+        android:layout_toEndOf="@id/no"
+        android:fontFamily="@font/acme"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        tools:text="Add the egg mixture to the dry mixture and gently mix to combine. Do not overmix." />
 
 
 

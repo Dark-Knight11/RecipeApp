@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         tools:text="Cake"
         android:textColor="@color/black"
+        android:fontFamily="@font/quicksand_medium"
         android:layout_marginTop="10dp"
         android:layout_below="@id/poster"
         android:textAlignment="center"
@@ -37,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:paddingTop="20dp"
-        app:tabSelectedTextColor="@color/teal_200"
+        app:tabSelectedTextColor="@color/green"
+        app:tabIndicatorColor="@color/green"
         app:tabTextColor="@color/black"
         android:layout_below="@id/title"/>
 

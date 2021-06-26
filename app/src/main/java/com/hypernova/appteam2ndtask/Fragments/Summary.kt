@@ -63,7 +63,7 @@ class Summary : Fragment() {
                 else {
                     val res: MenuInfo? = response.body()
                     restaurant.text = "Restaurant: " + res?.restaurantChain
-                    price.text = "Price " + res?.price.toString()
+                    price.text = "Price: " + res?.price.toString()
                     serving.text = "Number of Servings: " + res?.numberOfServings.toString()
                     type.text = "Type: " + res?.breadcrumbs?.get(0)
                     rating.text = "Rating: " + res?.spoonacularScore.toString()

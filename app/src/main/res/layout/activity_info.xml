@@ -19,7 +19,7 @@
         android:src="@drawable/ic_baseline_favorite_24"
         app:tint="@color/white"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#E94234"
+        android:backgroundTint="@color/red"
         app:borderWidth="0dp"
         tools:ignore="ContentDescription"
         tools:targetApi="lollipop" />
@@ -48,20 +48,21 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_below="@id/fb"
+        android:fontFamily="@font/adamina"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/fb"
         android:textColor="@color/black"
-        tools:text="124135" />
+        android:textSize="25sp"
+        tools:text="Vedant Bhamare" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_below="@id/title"
-        app:tabSelectedTextColor="#E94234"
-        app:tabIndicatorColor="#E94234"
+        app:tabSelectedTextColor="@color/red"
+        app:tabIndicatorColor="@color/red"
         app:tabTextColor="@color/black"
         app:tabMode="fixed" />
 

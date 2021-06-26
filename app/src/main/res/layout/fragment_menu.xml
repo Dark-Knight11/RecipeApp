@@ -18,6 +18,8 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="Burger"
+            android:fontFamily="@font/della_respira"
+            android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
@@ -36,6 +38,8 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="Pizza"
+            android:fontFamily="@font/della_respira"
+            android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
@@ -55,6 +59,8 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:text="Cakes"
+            android:fontFamily="@font/della_respira"
+            android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
@@ -71,8 +77,10 @@
         <ProgressBar
             android:id="@+id/progress_circular"
             android:layout_width="wrap_content"
+            android:progressBackgroundTintMode="@color/green"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            tools:targetApi="lollipop" />
 
     </RelativeLayout>
 

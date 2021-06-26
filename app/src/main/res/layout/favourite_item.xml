@@ -18,11 +18,13 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="name"
         android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
         android:layout_toEndOf="@id/image"
+        android:fontFamily="@font/della_respira"
+        android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        tools:text="Home made coffee ice cream" />
 
 </RelativeLayout>
