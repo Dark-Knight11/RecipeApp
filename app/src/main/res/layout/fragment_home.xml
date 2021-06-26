@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:titleEnabled="true"
-            app:title="Recipies"
+            app:title="Recipes"
             app:contentScrim="#B3191C2D"
             app:expandedTitleMarginStart="20dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
