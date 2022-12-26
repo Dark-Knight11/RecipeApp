@@ -18,7 +18,8 @@ class FavouriteFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
@@ -26,7 +27,6 @@ class FavouriteFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
         taskList = PrefConfig.readListFromPref(context)
-
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = FavouriteAdapter(taskList)

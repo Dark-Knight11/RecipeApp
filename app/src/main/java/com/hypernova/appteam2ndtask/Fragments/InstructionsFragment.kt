@@ -9,17 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hypernova.appteam2ndtask.APIService
+import com.hypernova.appteam2ndtask.ApiClasses.APIService
 import com.hypernova.appteam2ndtask.ApiClasses.Instructions
 import com.hypernova.appteam2ndtask.BuildConfig
 import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.R
 import com.hypernova.appteam2ndtask.RecyclerAdapters.InstructionsAdapter
+import kotlin.properties.Delegates
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
-
 
 class InstructionsFragment : Fragment() {
 
@@ -49,16 +48,18 @@ class InstructionsFragment : Fragment() {
 
     private fun getApi() {
         val call = APIService.api_instance.getInstructions(getData, key)
-        call.enqueue(object: Callback<List<Instructions>> {
-            override fun onResponse(call: Call<List<Instructions>>, response: Response<List<Instructions>>) {
-                if(response.code() == 402)
+        call.enqueue(object : Callback<List<Instructions>> {
+            override fun onResponse(
+                call: Call<List<Instructions>>,
+                response: Response<List<Instructions>>
+            ) {
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     if (response.body()?.size != 0) {
                         val res: List<Instructions>? = response.body()
                         recyclerView.adapter = InstructionsAdapter(res)
-                    }
-                    else
+                    } else
                         Toast.makeText(context, "No Intructions", Toast.LENGTH_LONG).show()
                 }
             }
@@ -68,4 +69,3 @@ class InstructionsFragment : Fragment() {
         })
     }
 }
-

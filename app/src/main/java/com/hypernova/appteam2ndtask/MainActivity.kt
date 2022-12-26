@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var ft: FragmentManager
     lateinit var bottomNav: BottomNavigationView
 
-
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         val pref: SharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
         val firstStart: Boolean = pref.getBoolean("firstStart", true)
-        if(firstStart) setData()
+        if (firstStart) setData()
 
         ft = supportFragmentManager
-        bottomNav.setOnNavigationItemSelectedListener{
-            val fragment: Fragment = when(it.itemId) {
+        bottomNav.setOnNavigationItemSelectedListener {
+            val fragment: Fragment = when (it.itemId) {
                 R.id.home -> HomeFragment()
                 R.id.menu -> MenuFragment()
                 R.id.fav -> FavouriteFragment()
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         var taskList: List<DataModel> = emptyList()
         val dataModel = DataModel("name", 1234, "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80")
         taskList = taskList + dataModel
-        PrefConfig.writeListInPref (this, taskList)
+        PrefConfig.writeListInPref(this, taskList)
         val pref: SharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE)
         val editor: SharedPreferences.Editor = pref.edit()
         editor.putBoolean("firstStart", false)

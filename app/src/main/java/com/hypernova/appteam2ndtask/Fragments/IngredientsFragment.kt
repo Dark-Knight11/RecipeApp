@@ -9,16 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hypernova.appteam2ndtask.APIService
+import com.hypernova.appteam2ndtask.ApiClasses.APIService
 import com.hypernova.appteam2ndtask.ApiClasses.IngredientsInfo
 import com.hypernova.appteam2ndtask.BuildConfig
 import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.R
 import com.hypernova.appteam2ndtask.RecyclerAdapters.IngredientsAdapter
+import kotlin.properties.Delegates
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
 
 class IngredientsFragment : Fragment() {
 
@@ -32,9 +32,13 @@ class IngredientsFragment : Fragment() {
         getId = activity.sendData()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.fragment_ingredients, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_ingredients, container, false)
 
         ingredientsRecycler = view.findViewById(R.id.ingredientsRecylcer)
         ingredientsRecycler.layoutManager = GridLayoutManager(context, 2)
@@ -45,9 +49,12 @@ class IngredientsFragment : Fragment() {
 
     private fun getApi() {
         val call = APIService.api_instance.getIngredients(getId, key)
-        call.enqueue(object: Callback<IngredientsInfo> {
-            override fun onResponse(call: Call<IngredientsInfo>, response: Response<IngredientsInfo>) {
-                if(response.code() == 402)
+        call.enqueue(object : Callback<IngredientsInfo> {
+            override fun onResponse(
+                call: Call<IngredientsInfo>,
+                response: Response<IngredientsInfo>
+            ) {
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     val res: IngredientsInfo? = response.body()
@@ -55,10 +62,8 @@ class IngredientsFragment : Fragment() {
                 }
             }
             override fun onFailure(call: Call<IngredientsInfo>, t: Throwable) {
-                Log.i("getIngredients","error: ",t)
+                Log.i("getIngredients", "error: ", t)
             }
         })
     }
-
 }
-

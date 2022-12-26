@@ -13,9 +13,9 @@ import com.hypernova.appteam2ndtask.ApiClasses.Menu
 import com.hypernova.appteam2ndtask.MenuInfoActivity
 import com.hypernova.appteam2ndtask.R
 
-class MenuAdapter(val res: Menu?) : RecyclerView.Adapter<MenuAdapter.ViewHolder>()  {
+class MenuAdapter(val res: Menu?) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     lateinit var context: Context
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val image: de.hdodenhof.circleimageview.CircleImageView = view.findViewById(R.id.image)
         val title: TextView = view.findViewById(R.id.title)
@@ -32,11 +32,13 @@ class MenuAdapter(val res: Menu?) : RecyclerView.Adapter<MenuAdapter.ViewHolder>
         Glide.with(context).load(res?.menuItems?.get(position)?.image).into(holder.image)
         holder.title.text = res?.menuItems?.get(position)?.title
         holder.menuItem.setOnClickListener {
-            context.startActivity(Intent(context, MenuInfoActivity::class.java).apply {
-                putExtra("id", res?.menuItems?.get(position)?.id)
-                putExtra("name", res?.menuItems?.get(position)?.title)
-                putExtra("image", res?.menuItems?.get(position)?.image)
-            })
+            context.startActivity(
+                Intent(context, MenuInfoActivity::class.java).apply {
+                    putExtra("id", res?.menuItems?.get(position)?.id)
+                    putExtra("name", res?.menuItems?.get(position)?.title)
+                    putExtra("image", res?.menuItems?.get(position)?.image)
+                }
+            )
         }
     }
 

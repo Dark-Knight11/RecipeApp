@@ -67,8 +67,7 @@ class InfoActivity : AppCompatActivity() {
                 taskList = taskList + dataModel
                 PrefConfig.writeListInPref(this, taskList)
                 Toast.makeText(this, "Added to Favourites", Toast.LENGTH_SHORT).show()
-            }
-            else
+            } else
                 Toast.makeText(this, "Already added to Favourites", Toast.LENGTH_SHORT).show()
         }
 
@@ -84,7 +83,6 @@ class InfoActivity : AppCompatActivity() {
         tabLayout.getTabAt(0)!!.text = "Ingredients"
         tabLayout.getTabAt(1)!!.text = "Instructions"
         tabLayout.getTabAt(2)!!.text = "Nutrition"
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

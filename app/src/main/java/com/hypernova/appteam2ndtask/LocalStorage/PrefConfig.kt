@@ -6,7 +6,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-
 object PrefConfig {
     private val LIST_KEY = "favourites"
     fun writeListInPref(context: Context?, list: List<DataModel?>?) {

@@ -11,8 +11,7 @@ import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.R
 import kotlin.properties.Delegates
 
-
-class Nutrition: Fragment() {
+class Nutrition : Fragment() {
 
     var getId by Delegates.notNull<Int>()
     val apiKey = BuildConfig.API_KEY
@@ -28,7 +27,7 @@ class Nutrition: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view: View =  inflater.inflate(R.layout.fragment_nutrition, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_nutrition, container, false)
 
         val myWebView: WebView = view.findViewById(R.id.webView)
         myWebView.loadUrl("https://api.spoonacular.com/recipes/$getId/nutritionWidget?defaultCss=true&apiKey=$apiKey")

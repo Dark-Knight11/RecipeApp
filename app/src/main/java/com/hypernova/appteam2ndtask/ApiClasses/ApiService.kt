@@ -1,6 +1,5 @@
-package com.hypernova.appteam2ndtask
+package com.hypernova.appteam2ndtask.ApiClasses
 
-import com.hypernova.appteam2ndtask.ApiClasses.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hypernova.appteam2ndtask.ApiClasses.Instructions
 import com.hypernova.appteam2ndtask.R
 
-
 class InstructionsAdapter(val res: List<Instructions>?) : RecyclerView.Adapter<InstructionsAdapter.ViewHolder>() {
     lateinit var context: Context
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var no: TextView = view.findViewById(R.id.no)
         var step: TextView = view.findViewById(R.id.step)
     }

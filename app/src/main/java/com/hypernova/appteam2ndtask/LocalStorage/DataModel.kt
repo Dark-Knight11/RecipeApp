@@ -1,7 +1,7 @@
 package com.hypernova.appteam2ndtask.LocalStorage
 import java.io.Serializable
 
-class DataModel: Serializable {
+class DataModel : Serializable {
     var name: String? = null
         private set
     var id: Int? = null

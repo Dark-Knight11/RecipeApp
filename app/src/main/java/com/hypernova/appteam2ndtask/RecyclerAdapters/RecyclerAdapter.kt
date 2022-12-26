@@ -12,7 +12,7 @@ import com.hypernova.appteam2ndtask.ApiClasses.SearchResult
 import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.R
 
-class RecyclerAdapter(val res: SearchResult?): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>()  {
+class RecyclerAdapter(val res: SearchResult?) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     lateinit var context: Context
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -29,11 +29,13 @@ class RecyclerAdapter(val res: SearchResult?): RecyclerView.Adapter<RecyclerAdap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = res?.results?.get(position)?.title
         holder.recipe.setOnClickListener {
-            context.startActivity(Intent(context, InfoActivity::class.java).apply {
-                putExtra("id", res?.results?.get(position)?.id)
-                putExtra("name", res?.results?.get(position)?.title)
-                putExtra("image", res?.results?.get(position)?.image)
-            })
+            context.startActivity(
+                Intent(context, InfoActivity::class.java).apply {
+                    putExtra("id", res?.results?.get(position)?.id)
+                    putExtra("name", res?.results?.get(position)?.title)
+                    putExtra("image", res?.results?.get(position)?.image)
+                }
+            )
         }
     }
 

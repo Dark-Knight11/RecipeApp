@@ -15,7 +15,7 @@ import com.hypernova.appteam2ndtask.ApiClasses.Random
 import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.R
 
-class RandomAdapter(val rad: Random?) : RecyclerView.Adapter<RandomAdapter.ViewHolder>()  {
+class RandomAdapter(val rad: Random?) : RecyclerView.Adapter<RandomAdapter.ViewHolder>() {
 
     lateinit var context: Context
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,14 +39,16 @@ class RandomAdapter(val rad: Random?) : RecyclerView.Adapter<RandomAdapter.ViewH
         Glide.with(context).load(rad?.recipes?.get(position)?.image).into(holder.imageView)
         holder.time.text = "Time to make: " + rad?.recipes?.get(position)?.readyInMinutes.toString() + " Min"
         holder.price.text = "Price: " + rad?.recipes?.get(position)?.pricePerServing.toString()
-        if(rad?.recipes?.get(position)?.vegetarian == true) holder.veg.setImageResource(R.drawable.ic_veg)
+        if (rad?.recipes?.get(position)?.vegetarian == true) holder.veg.setImageResource(R.drawable.ic_veg)
         else holder.veg.setImageResource(R.drawable.ic_nonveg)
         holder.recipe.setOnClickListener {
-            context.startActivity(Intent(context, InfoActivity::class.java).apply {
-                putExtra("id", rad?.recipes?.get(position)?.id)
-                putExtra("name", rad?.recipes?.get(position)?.title)
-                putExtra("image", rad?.recipes?.get(position)?.image)
-            })
+            context.startActivity(
+                Intent(context, InfoActivity::class.java).apply {
+                    putExtra("id", rad?.recipes?.get(position)?.id)
+                    putExtra("name", rad?.recipes?.get(position)?.title)
+                    putExtra("image", rad?.recipes?.get(position)?.image)
+                }
+            )
         }
     }
 

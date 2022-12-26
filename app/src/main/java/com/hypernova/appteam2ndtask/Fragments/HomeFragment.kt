@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-import com.hypernova.appteam2ndtask.APIService
+import com.hypernova.appteam2ndtask.ApiClasses.APIService
 import com.hypernova.appteam2ndtask.ApiClasses.Random
 import com.hypernova.appteam2ndtask.ApiClasses.SearchResult
 import com.hypernova.appteam2ndtask.BuildConfig
@@ -32,7 +32,11 @@ class HomeFragment : Fragment() {
     lateinit var appBar: AppBarLayout
     lateinit var progressBar: ProgressBar
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -48,8 +52,16 @@ class HomeFragment : Fragment() {
         search.setOnSearchClickListener {
             appBar.setExpanded(false)
         }
+
+        search.setOnCloseListener {
+            appBar.setExpanded(true)
+            search.onActionViewCollapsed()
+            getRandom()
+            true
+        }
+
         search.layoutParams = Toolbar.LayoutParams(Gravity.END)
-        search.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 getApi(query)
                 return true
@@ -66,7 +78,7 @@ class HomeFragment : Fragment() {
         val call = APIService.api_instance.getresults(key, query)
         call.enqueue(object : Callback<SearchResult> {
             override fun onResponse(call: Call<SearchResult>, response: Response<SearchResult>) {
-                if(response.code() == 402)
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     val resultSearchResult: SearchResult? = response.body()
@@ -82,9 +94,9 @@ class HomeFragment : Fragment() {
 
     private fun getRandom() {
         val call = APIService.api_instance.getRandom(key, 20)
-        call.enqueue(object: Callback<Random>{
+        call.enqueue(object : Callback<Random> {
             override fun onResponse(call: Call<Random>, response: Response<Random>) {
-                if(response.code() == 402)
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     val res: Random? = response.body()

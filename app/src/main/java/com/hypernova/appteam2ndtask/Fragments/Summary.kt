@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.hypernova.appteam2ndtask.APIService
+import com.hypernova.appteam2ndtask.ApiClasses.APIService
 import com.hypernova.appteam2ndtask.ApiClasses.MenuInfo
 import com.hypernova.appteam2ndtask.BuildConfig
 import com.hypernova.appteam2ndtask.MenuInfoActivity
 import com.hypernova.appteam2ndtask.R
+import kotlin.properties.Delegates
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.properties.Delegates
 
 class Summary : Fragment() {
 
@@ -37,7 +37,8 @@ class Summary : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
@@ -55,10 +56,10 @@ class Summary : Fragment() {
 
     private fun getAPi() {
         val call = APIService.api_instance.getMenuInfo(getId, key)
-        call.enqueue(object: Callback<MenuInfo>{
+        call.enqueue(object : Callback<MenuInfo> {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<MenuInfo>, response: Response<MenuInfo>) {
-                if(response.code() == 402)
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     val res: MenuInfo? = response.body()

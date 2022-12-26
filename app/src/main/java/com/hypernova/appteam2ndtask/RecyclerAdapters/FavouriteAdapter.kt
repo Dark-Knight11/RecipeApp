@@ -14,9 +14,9 @@ import com.hypernova.appteam2ndtask.InfoActivity
 import com.hypernova.appteam2ndtask.LocalStorage.DataModel
 import com.hypernova.appteam2ndtask.R
 
-class FavouriteAdapter(private val taskModelList: List<DataModel>) : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>()  {
+class FavouriteAdapter(private val taskModelList: List<DataModel>) : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
     lateinit var context: Context
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val text: TextView = view.findViewById(R.id.textView)
         val image: ImageView = view.findViewById(R.id.image)
         val card: RelativeLayout = view.findViewById(R.id.card)
@@ -36,11 +36,13 @@ class FavouriteAdapter(private val taskModelList: List<DataModel>) : RecyclerVie
         holder.text.text = taskModelList[position].name
         Glide.with(context).load(taskModelList[position].image).into(holder.image)
         holder.card.setOnClickListener {
-            context.startActivity(Intent(context, InfoActivity::class.java).apply {
-                putExtra("id", taskModelList[position].id)
-                putExtra("name", taskModelList[position].name)
-                putExtra("image", taskModelList[position].image)
-            })
+            context.startActivity(
+                Intent(context, InfoActivity::class.java).apply {
+                    putExtra("id", taskModelList[position].id)
+                    putExtra("name", taskModelList[position].name)
+                    putExtra("image", taskModelList[position].image)
+                }
+            )
         }
     }
 }

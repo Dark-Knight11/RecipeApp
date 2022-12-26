@@ -11,7 +11,7 @@ import com.hypernova.appteam2ndtask.MenuInfoActivity
 import com.hypernova.appteam2ndtask.R
 import kotlin.properties.Delegates
 
-class MenuNutrition: Fragment() {
+class MenuNutrition : Fragment() {
 
     var getId by Delegates.notNull<Int>()
     private val apiKey = BuildConfig.API_KEY

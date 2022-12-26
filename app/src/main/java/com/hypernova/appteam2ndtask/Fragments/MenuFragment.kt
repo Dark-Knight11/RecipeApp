@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hypernova.appteam2ndtask.APIService
+import com.hypernova.appteam2ndtask.ApiClasses.APIService
 import com.hypernova.appteam2ndtask.ApiClasses.Menu
 import com.hypernova.appteam2ndtask.BuildConfig
 import com.hypernova.appteam2ndtask.R
@@ -32,7 +32,8 @@ class MenuFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
@@ -47,7 +48,6 @@ class MenuFragment : Fragment() {
         pizzaLayout.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         cakeLayout.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-
         getMenu("burger", burgerLayout)
         getMenu("pizza", pizzaLayout)
         getMenu("cake", cakeLayout)
@@ -57,9 +57,9 @@ class MenuFragment : Fragment() {
 
     fun getMenu(query: String, layout: RecyclerView) {
         val call = APIService.api_instance.getMenu(key, query)
-        call.enqueue(object: Callback<Menu> {
+        call.enqueue(object : Callback<Menu> {
             override fun onResponse(call: Call<Menu>, response: Response<Menu>) {
-                if(response.code() == 402)
+                if (response.code() == 402)
                     Toast.makeText(context, "Quota Finished", Toast.LENGTH_SHORT).show()
                 else {
                     val res: Menu? = response.body()
@@ -72,5 +72,4 @@ class MenuFragment : Fragment() {
             }
         })
     }
-
 }
