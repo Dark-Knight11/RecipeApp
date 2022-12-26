@@ -1,6 +1,9 @@
 name: ktlint
 
 on:
+  push:
+    paths-ignore:
+      - '*.md'
   pull_request:
     paths:
       - .github/workflows/ktlint.yml
