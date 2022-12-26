@@ -38,5 +38,5 @@ jobs:
           commit-message: Auto-modify files by daily ktlint
           title: Changes from ktlint
           body: This is an auto-generated PR with changes from ktlint
-          author: vedantbhamare11@gmail.com
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           committer: Vedant Bhamare
