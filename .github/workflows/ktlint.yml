@@ -39,4 +39,4 @@ jobs:
           title: Changes from ktlint
           body: This is an auto-generated PR with changes from ktlint
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          committer: Vedant Bhamare
+          committer: Vedant Bhamare <vedantbhamare11@gmail.com>
