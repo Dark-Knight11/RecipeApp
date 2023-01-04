@@ -11,6 +11,10 @@ class DataModel : Serializable {
 
     constructor() { }
 
+
+
+
+
     constructor(name: String?, id: Int?, image: String?) {
         this.name = name
         this.id = id
