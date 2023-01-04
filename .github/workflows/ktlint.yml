@@ -8,11 +8,11 @@ on:
 
 jobs:
   ktlint:
-    if: github.event.pull_request.merged == false && github.event.action != 'closed'
     runs-on: ubuntu-latest
     permissions:
       contents: none
       pull-requests: write
+    if: github.event.pull_request.merged == false && github.event.action != 'closed'
     steps:
       - uses: actions/checkout@v3
       - name: Setup JDK 11
