@@ -25,9 +25,6 @@ jobs:
           API_KEY: ${{secrets.API_KEY}}
         run: |
           echo $API_KEY >> gradle.properties
-          echo "org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8" >> gradle.properties
-          echo "android.useAndroidX=true" >> gradle.properties
-          echo "kotlin.code.style=official" >> gradle.properties
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: ktlintFormat
