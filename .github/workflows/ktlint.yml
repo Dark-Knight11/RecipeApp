@@ -36,8 +36,8 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           branch: ktlint-fixes
-          commit-message: Auto-modify files by daily ktlint
-          title: Changes from ktlint
+          commit-message: Auto-modify files by ktlint
+          title: Ktlint fixes
           body: This is an auto-generated PR with changes from ktlint
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           committer: Vedant Bhamare <vedantbhamare11@gmail.com>
