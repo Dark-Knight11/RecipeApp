@@ -8,37 +8,37 @@ on:
 
 jobs:
   ktlint:
-    if: github.event.pull_request.merged == false
-      runs-on: ubuntu-latest
-      permissions:
-        contents: none
-        pull-requests: write
-      steps:
-        - uses: actions/checkout@v3
-        - name: Setup JDK 11
-          uses: actions/setup-java@v3
-          with:
-            java-version: 11
-            distribution: "adopt"
-            cache: gradle
-        - name: Decode API KEY
-          env:
-            API_KEY: ${{secrets.API_KEY}}
-          run: |
-            echo $API_KEY >> gradle.properties
-        - name: Grant execute permission for gradlew
-          run: chmod +x gradlew
-        - name: ktlintFormat
-          continue-on-error: true
-          run: ./gradlew ktlintFormat
+    if: github.event.pull_request.merged == false && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: none
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: "adopt"
+          cache: gradle
+      - name: Decode API KEY
+        env:
+          API_KEY: ${{secrets.API_KEY}}
+        run: |
+          echo $API_KEY >> gradle.properties
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: ktlintFormat
+        continue-on-error: true
+        run: ./gradlew ktlintFormat
 
-        - name: Create Pull Request
-          uses: peter-evans/create-pull-request@main
-          with:
-            token: ${{ secrets.PAT_TOKEN }}
-            branch: ktlint-fixes
-            commit-message: Auto-modify files by ktlint
-            title: Ktlint fixes
-            body: This is an auto-generated PR with changes from ktlint
-            author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-            committer: Vedant Bhamare <vedantbhamare11@gmail.com>
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@main
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          branch: ktlint-fixes
+          commit-message: Auto-modify files by ktlint
+          title: Ktlint fixes
+          body: This is an auto-generated PR with changes from ktlint
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          committer: Vedant Bhamare <vedantbhamare11@gmail.com>
