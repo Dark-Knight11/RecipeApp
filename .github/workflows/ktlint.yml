@@ -2,13 +2,9 @@ name: ktlint
 
 on:
   push:
+    branches: [ ktlint-test ]
     paths-ignore:
       - '*.md'
-  pull_request:
-    paths:
-      - .github/workflows/ktlint.yml
-      - 'src/**/*.kt'
-      - '**.kts'
 
 jobs:
   ktlint:
